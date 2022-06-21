@@ -1,0 +1,10 @@
+[06-Jul-2021 10:41:30 Asia/Riyadh] PHP Fatal error:  Cannot declare class AddElmReplyToOrdersTable, because the name is already in use in /home/caberzapps/public_html/database/migrations/2021_04_13_150457_add_elm_reply_to_orders_table.php on line 7
+[06-Jul-2021 10:48:58 Asia/Riyadh] PHP Fatal error:  Cannot declare class AddElmReplyToOrdersTable, because the name is already in use in /home/caberzapps/public_html/database/migrations/2021_04_13_150457_add_elm_reply_to_orders_table.php on line 7
+[17-Jul-2021 09:57:03 UTC] PHP Parse error:  syntax error, unexpected 'Commands' (T_STRING), expecting ']' in /home/caberzapps/public_html/app/Console/Kernel.php on line 17
+[17-Jul-2021 09:57:06 UTC] PHP Parse error:  syntax error, unexpected 'Commands' (T_STRING), expecting ']' in /home/caberzapps/public_html/app/Console/Kernel.php on line 17
+[17-Jul-2021 09:57:16 UTC] PHP Parse error:  syntax error, unexpected 'Commands' (T_STRING), expecting ']' in /home/caberzapps/public_html/app/Console/Kernel.php on line 17
+[14-Jun-2022 15:11:24 UTC] PHP Warning:  require(/home/ksacab/public_html/cab-sa/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ksacab/public_html/cab-sa/artisan on line 18
+[14-Jun-2022 15:11:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ksacab/public_html/cab-sa/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/ksacab/public_html/cab-sa/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /home/ksacab/public_html/cab-sa/artisan on line 18

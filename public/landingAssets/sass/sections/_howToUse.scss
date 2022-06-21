@@ -1,0 +1,115 @@
+.howToUse {
+    margin-top: 250px;
+    padding: 10px;
+    background: #eeeeee;
+    position: relative;
+    .big_circle {
+        width: 300px;
+        height: 300px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        border: 1px solid #244d7478;
+        position: absolute;
+        top: -150px;
+        left: 50%;
+        transform: translateX(-50%);
+        .small_circle {
+            width: 280px;
+            height: 280px;
+            background: transparent radial-gradient(closest-side at 50% 50%, #4a8d8c 0%, #1f4471 100%) 0% 0% no-repeat padding-box;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            &:after {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                content: '';
+                border: 5px solid #4A8D8C;
+                border-radius: 50%;
+                border-top-color: transparent !important;
+                border-bottom-color: transparent !important;
+                -webkit-animation: rotation 6s infinite linear;
+                -o-animation: rotation 6s infinite linear;
+                animation: rotation 6s infinite linear;
+            }
+            .text {
+                font-size: 50px;
+                color: #fff;
+                text-align: center;
+            }
+        }
+        @media (max-width: 400px) {
+            width: 250px;
+            height: 250px;
+            .small_circle {
+                width: 230px;
+                height: 230px;
+                .text {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+    .screens_inside {
+        margin-top: 200px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        .cut {
+            height: 100px;
+        }
+        @media (max-width: 960px) {
+            .cut {
+                display: none;
+            }
+        }
+        .screen {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .icon {
+                margin-bottom: 20px;
+                height: 100px;
+            }
+            .video {
+                cursor: pointer;
+                width: 400px;
+                height: 400px;
+                display: block;
+                margin: 10px auto;
+                position: relative;
+                img.preview {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                    transition: all 0.2s linear;
+                    &.videoPlay {
+                        opacity: 0;
+                        z-index: 0;
+                    }
+                }
+                video {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}

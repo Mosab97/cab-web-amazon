@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Events\Chat;
+
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class MessageIsDeliveredEvent implements ShouldBroadcast
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+    public $data;
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('users-chat.'.$this->data->id);
+
+    }
+
+
+    public function broadcastWith()
+    {
+        return [
+            'chat_id' => $this->data->chat_id,
+            'sender_id' => $this->data->sender_id,
+            'messages' => $this->data->messages,
+            'received_at' => $this->data->received_at->format('Y-m-d H:i'),
+        ];
+    }
+}

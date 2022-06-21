@@ -1,0 +1,11 @@
+.homePage {
+  overflow-x: hidden;
+
+  section {
+    padding-inline: 70px;
+
+    @media (max-width: 500px) {
+      padding-inline: 10px;
+    }
+  }
+}

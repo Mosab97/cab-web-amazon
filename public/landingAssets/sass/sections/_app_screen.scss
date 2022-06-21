@@ -1,0 +1,73 @@
+.app-screen {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    .screen-tit {
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
+    }
+    .screen-item {
+        text-align: center;
+        margin: 20px auto;
+        img {
+            max-width: 100%;
+            @media(max-width: 992px) {
+                max-width: 100%;
+            }
+        }
+    }
+    .col-md-4 {
+        &:nth-child(6n+1) .screen-item {
+            img {
+                max-width: 100%;
+                @media(max-width: 992px) {
+                    max-width: 100%;
+                }
+            }
+        }
+        &:nth-child(6n+2) .screen-item {
+            img {
+                max-width: 83%;
+                @media(max-width: 992px) {
+                    max-width: 100%;
+                }
+            }
+        }
+        &:nth-child(6n+3) .screen-item {
+            img {
+                max-width: 63%;
+                @media(max-width: 992px) {
+                    max-width: 100%;
+                }
+            }
+        }
+        &:nth-child(6n+4) .screen-item {
+            img {
+                max-width: 63%;
+                @media(max-width: 992px) {
+                    max-width: 100%;
+                }
+            }
+        }
+        &:nth-child(6n+5) .screen-item {
+            img {
+                max-width: 83%;
+                @media(max-width: 992px) {
+                    max-width: 100%;
+                }
+            }
+        }
+        &:nth-child(6n+6) .screen-item {
+            img {
+                max-width: 100%;
+                @media(max-width: 992px) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .row {
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,15 @@
+.always-caberz {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    clip-path: polygon(0 0, 100% 0%, 100% 76%, 50% 100%, 0 76%);
+    background-color: #9DB6BE;
+    box-shadow: inset 50px 50px 50px #00000029, 0px 3px 6px #413D3D29;
+    .image {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 140px;
+            animation: pulseImg 4s linear infinite;
+        }
+    }
+}

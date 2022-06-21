@@ -1,0 +1,17 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+
+.env.backup
+.phpunit.result.cache
+Homestead.json
+laravel-echo-server.json
+laravel-echo-server.lock
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+laravel-worker.log
+public/.htaccess
+public/error_log
+.idea
