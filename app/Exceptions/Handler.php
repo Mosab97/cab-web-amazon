@@ -52,9 +52,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return response()->json(['status' => 'fail','message' => $exception->getMessage() , 'data' => null],403);
-
-        dd($exception->getMessage());
         if ($this->isHttpException($exception) && !$request->wantsJson()) {
             $code = $exception->getStatusCode();
             switch ($code) {
