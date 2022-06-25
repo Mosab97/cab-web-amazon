@@ -102,6 +102,7 @@ class OrderController extends Controller
 
             return (new OrderResource($order))->additional(['status' => 'success', 'message' => trans('api.messages.success_send_to_drivers')]);
         } catch (\Exception $e) {
+
             // \DB::rollback();
             return response()->json(['status' => 'fail', 'message' => trans('dashboard.messages.something_went_wrong_please_try_again'), 'data' => null], 500);
         }
@@ -363,32 +364,14 @@ class OrderController extends Controller
         $drivers = Driver::whereHas('user', function ($q)  use ($order) {
             $q->available()->whereHas('profile', function ($q) {
                 $q->whereNotNull('profiles.last_login_at');
-            })->whereHas('devices')/*->withCount(['driverOrders','driverOrders as driver_orders_count' => function ($q) {
-                $q->whereNotNull('orders.finished_at');
-            }])*/
-                // ->whereIn('users.id',online_users()->pluck('id'))
-
+            })->whereHas('devices')
                 ->whereHas('car', function ($q) use ($order) {
                     $q->where('cars.car_type_id', $order->car_type_id);
                 });
-        })->whereIn('driver_type', [$order->order_type, 'both'])->where(function ($q) {
-            /*$q->where(function ($q) {
-                $q->where('is_on_default_package',false)->whereHas('subscribedPackage',function ($q) {
-                    $q->whereDate('end_at',">=",date("Y-m-d"))->where('is_paid',1);
-                });
-            })->orWhere(function ($q) {
-                $q->where(function ($q) {
-                    $q->where('is_on_default_package',true)->where('free_order_counter',"<",((int)setting('number_of_free_orders_on_default_package')))->orWhere(function ($q) {
-                       $q->where('is_on_default_package',true)->whereHas('user',function ($q) {
-                           $q->where('wallet',">",-(setting('min_wallet_to_recieve_order') ?? 10));
-                       });
-                   });
-                });
-            })*/
-            // $q->orWhereHas('user',function ($q) {
-            //     $q->where('is_with_special_needs',true);
-            // });
-        })->when($order->start_lat && $order->start_lng, function ($q) use ($order) {
+        })
+//            ->whereIn('driver_type', [$order->order_type, 'both'])->where(function ($q) {
+//        })
+            ->when($order->start_lat && $order->start_lng, function ($q) use ($order) {
             $q->nearest($order->start_lat, $order->start_lng);
         })->when(((int)convertArabicNumber(setting('number_drivers_to_notify'))) > 0, function ($q) {
             $q->take(convertArabicNumber(setting('number_drivers_to_notify')));
@@ -420,7 +403,7 @@ class OrderController extends Controller
         \Notification::send($db_drivers, new FCMNotification($fcm_data, ['database']));
 
         // Resend If Not Offers
-        SendOrderRequestToDriver::dispatch($order, $drivers_ids_array, (int)setting('number_drivers_to_notify'))->delay(now()->addMinutes($minutes))->onQueue('high');
+//        SendOrderRequestToDriver::dispatch($order, $drivers_ids_array, (int)setting('number_drivers_to_notify'))->delay(now()->addMinutes($minutes))->onQueue('high');
 //        UpdateOrderStatus::dispatch($order, 'admin_cancel')->delay(now()->addMinutes($minutes_to_cancel))->onQueue('low');
     }
 
