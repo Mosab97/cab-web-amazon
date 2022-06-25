@@ -421,7 +421,7 @@ class OrderController extends Controller
 
         // Resend If Not Offers
         SendOrderRequestToDriver::dispatch($order, $drivers_ids_array, (int)setting('number_drivers_to_notify'))->delay(now()->addMinutes($minutes))->onQueue('high');
-        UpdateOrderStatus::dispatch($order, 'admin_cancel')->delay(now()->addMinutes($minutes_to_cancel))->onQueue('low');
+//        UpdateOrderStatus::dispatch($order, 'admin_cancel')->delay(now()->addMinutes($minutes_to_cancel))->onQueue('low');
     }
 
     public function sendTip(TipRequest $request, $order_id)
