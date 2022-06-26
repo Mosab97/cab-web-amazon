@@ -96,7 +96,7 @@ class OfferController extends Controller
 
             \DB::commit();
             $minutes_to_finish = ((int)convertArabicNumber(setting('waiting_time_to_finish_order'))) ?? 1;
-            UpdateOrderStatus::dispatch($order,'admin_finish')->delay(now()->addMinutes($minutes_to_finish))->onQueue('low');
+//            UpdateOrderStatus::dispatch($order,'admin_finish')->delay(now()->addMinutes($minutes_to_finish))->onQueue('low');
             $admins = User::whereIn('user_type',['admin','superadmin'])->get();
             \Notification::send($admins,new ChangeOrderStatusNotification($order));
             $fcm_data = [

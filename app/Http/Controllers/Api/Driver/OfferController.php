@@ -47,7 +47,7 @@ class OfferController extends Controller
                // $start_at = date("Y-m-d H:i:s",strtotime(optional($order->order_status_times)->pending));
                // $minutes_after_pending = (int)now()->diffInMinutes($start_at);
                $minutes_to_cancel = (((int)convertArabicNumber(setting('waiting_time_to_cancel_order'))) ?? 1);
-               UpdateOrderStatus::dispatch($order,'admin_cancel','pending')->delay(now()->addMinutes($minutes_to_cancel))->onQueue('low');
+//               UpdateOrderStatus::dispatch($order,'admin_cancel','pending')->delay(now()->addMinutes($minutes_to_cancel))->onQueue('low');
            }
            $offer = $order->offers()->updateOrCreate(['order_id' => $request->order_id , 'driver_id' => auth('api')->id()],$request->validated()+['driver_id' => auth('api')->id()]);
            \DB::commit();

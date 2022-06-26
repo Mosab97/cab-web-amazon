@@ -16,3 +16,4 @@ laravel-worker.log
 public/.htaccess
 public/error_log
 .idea
+.htaccess
