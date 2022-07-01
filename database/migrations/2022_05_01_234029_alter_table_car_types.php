@@ -14,8 +14,8 @@ class AlterTableCarTypes extends Migration
     public function up()
     {
         Schema::table('car_types', function (Blueprint $table) {
-            $table->integer('counter_open')->default(12);
-            $table->integer('kilo_price')->default(1);
+//            $table->integer('counter_open')->default(12);
+//            $table->integer('kilo_price')->default(1);
         });
     }
 
